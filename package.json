@@ -1,0 +1,17 @@
+{
+    "name": "taskapp",
+    "version": "1.0.0",
+    "description": "taskapp for organising your life",
+    "main": "./server/index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "cd ./server && node index.js",
+      "build": "cd ./server && npm i"
+    },
+    "engines": {
+      "node": "18.x"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
