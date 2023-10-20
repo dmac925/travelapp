@@ -1,7 +1,5 @@
-const { TEMPLATES } = require('../data/templates');
 const OpenAIApi = require("openai");
 const express = require('express');
-const types = require('../data/types');
 const router = express.Router();
 
 const openai = new OpenAIApi({

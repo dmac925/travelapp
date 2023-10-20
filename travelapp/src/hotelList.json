@@ -1,0 +1,178 @@
+[
+      {
+        "name": "Sunrise Suites",
+        "brand": "LuxuryStay",
+        "location": {
+          "city": "Los Angeles",
+          "country": "USA"
+        },
+        "stars": 5,
+        "totalRooms": 120,
+        "parking": true,
+        "images": [
+          {
+            "label": "building",
+            "description": "Front view of Sunrise Suites.",
+            "url": "http://example.com/sunrise-suites-building.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Downtown Inn",
+        "location": {
+          "city": "Los Angeles",
+          "country": "USA"
+        },
+        "stars": 3,
+        "totalRooms": 75,
+        "parking": false,
+        "images": [
+          {
+            "label": "lobby",
+            "description": "Spacious lobby area.",
+            "url": "http://example.com/downtown-inn-lobby.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Beachfront Resort",
+        "brand": "SeaEscape",
+        "location": {
+          "city": "Los Angeles",
+          "country": "USA"
+        },
+        "stars": 4,
+        "totalRooms": 140,
+        "parking": true,
+        "images": [
+          {
+            "label": "outdoor pool",
+            "description": "Pool with ocean view.",
+            "url": "http://example.com/beachfront-resort-pool.jpg"
+          }
+        ]
+      },
+      {
+        "name": "City Center Motel",
+        "location": {
+          "city": "Los Angeles",
+          "country": "USA"
+        },
+        "stars": 2,
+        "totalRooms": 50,
+        "parking": true,
+        "images": [
+          {
+            "label": "standard room",
+            "description": "Comfortable room with two beds.",
+            "url": "http://example.com/city-center-room.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Skyline Hotel",
+        "brand": "Horizon",
+        "location": {
+          "city": "New York",
+          "country": "USA"
+        },
+        "stars": 5,
+        "totalRooms": 200,
+        "parking": false,
+        "images": [
+          {
+            "label": "views",
+            "description": "City view from the hotel room.",
+            "url": "http://example.com/skyline-views.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Harbor Retreat",
+        "location": {
+          "city": "New York",
+          "country": "USA"
+        },
+        "stars": 4,
+        "totalRooms": 110,
+        "parking": false,
+        "images": [
+          {
+            "label": "restaurant",
+            "description": "Fine dining with harbor views.",
+            "url": "http://example.com/harbor-restaurant.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Broadway Lodge",
+        "brand": "StayCentral",
+        "location": {
+          "city": "New York",
+          "country": "USA"
+        },
+        "stars": 3,
+        "totalRooms": 85,
+        "parking": true,
+        "images": [
+          {
+            "label": "gym",
+            "description": "Modern fitness center.",
+            "url": "http://example.com/broadway-gym.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Empire Hostel",
+        "location": {
+          "city": "New York",
+          "country": "USA"
+        },
+        "stars": 2,
+        "totalRooms": 30,
+        "parking": false,
+        "images": [
+          {
+            "label": "bathroom",
+            "description": "Clean shared bathroom.",
+            "url": "http://example.com/empire-bathroom.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Royal Plaza",
+        "brand": "ElegantStay",
+        "location": {
+          "city": "New York",
+          "country": "USA"
+        },
+        "stars": 5,
+        "totalRooms": 180,
+        "parking": true,
+        "images": [
+          {
+            "label": "suite",
+            "description": "Lavish suite with living area.",
+            "url": "http://example.com/royal-suite.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Parkside BnB",
+        "location": {
+          "city": "New York",
+          "country": "USA"
+        },
+        "stars": 3,
+        "totalRooms": 15,
+        "parking": true,
+        "images": [
+          {
+            "label": "bar",
+            "description": "Cozy bar with local brews.",
+            "url": "http://example.com/parkside-bar.jpg"
+          }
+        ]
+      }
+    ]
+  

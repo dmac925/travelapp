@@ -6,17 +6,11 @@ import { URL } from "./config";
 import * as jose from "jose";
 import Navbar from "./components/Navbar.js";
 import Home from "./views/Home";
-import AllTasks from './views/AllTasks';
-import AddTask from './views/AddTask';
-import AddItem from './views/AddItem';
 import AllUsers from './views/AllUsers';
 import Register from './views/Register';
 import Login from './views/Login';
-import MyTasks from './views/MyTasks';
-import MyItems from './views/MyItems';
-import UserInput from './views/UserInput';
-import MyTasksTable from './views/MyTasksTable';
 import UserContext from './UserContext';
+import HotelResults from './views/HotelResults';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -92,13 +86,7 @@ function App() {
           element={isLoggedIn ? <Navigate to="/myTasks" /> : <Register />}
         />
 
-        <Route path ="/addTask" element={<AddTask />} />
-        <Route path ="/addItem" element={<AddItem />} />
-        <Route path ="/userInput" element={<UserInput />} />
-          <Route path ="/allTasks" element={<AllTasks />} />
-          <Route path ="/myTasks" element={<MyTasks />} />
-          <Route path ="/myItems" element={<MyItems />} />
-          <Route path ="/myTasksTable" element={<MyTasksTable />} />
+        <Route path ="/HotelResults" element={<HotelResults />} />
           <Route path ="/register" element={<Register />} />
           <Route path ="/login" element={<Login />} />
           <Route path="/allUsers" element={isAdmin ? <AllUsers /> : <Navigate to="/login" />} />

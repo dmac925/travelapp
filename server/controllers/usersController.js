@@ -1,5 +1,4 @@
 const Users = require("../models/users");
-const Tasks = require('../models/tasks');
 const jwt = require("jsonwebtoken");
 const validator = require("validator");
 const bcrypt = require('bcrypt');
@@ -14,6 +13,8 @@ const findAll = async (req, res) => {
     res.send({ e });
   }
 };
+
+
 
 const getUserIDByEmail = async (req, res) => {
   const { email } = req.body;

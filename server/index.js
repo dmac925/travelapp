@@ -3,9 +3,6 @@ const app = express();
 require ("dotenv").config();
 const port = process.env.PORT || 5060;
 const mongoose = require("mongoose");
-const travelRoutes = require('./routes/travelRoutes');
-
-
 
 app.use(require("express").json());
 app.use(express.urlencoded({ extended: false }));
@@ -25,10 +22,10 @@ async function connecting(){
     const cors = require('cors');
 app.use(cors());
 
-app.use("/tasks", require ("./routes/tasksRoutes"));
 app.use("/users", require ("./routes/usersRoutes"));
 app.use("/api", require("./routes/openai"));
-app.use("/api/travel", require ("./routes/travelRoutes"));
+app.use("/hotels", require ("./routes/hotelRoutes"));
+
 
 
 

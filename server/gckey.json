@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "pharmacy-394922",
+  "private_key_id": "94e2e243666e3fb1e45100064a9c842706e36a8f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC8bNc5Glh3n8FV\nQZvWevmfY2U8Gqv85iiHAJgrrtC07Ol2jbijedslOqjoyUZcSzGflZvMYWtCDRIl\n5I3c4b03mnSLKjsATvZSG29AtAp0X+nLtDxZqNWIUm9aLtpO9VFqVTxnoEApSI0Y\nBT12tLKWDfetOjoeb7fTD9fbPYbi209ThXpQZ9KXIFrR8UaEJz4fb2qMusrXNQui\n41gRbf+LjDlQC4JO8HnWD/VkGyjcF6uLWpR0/QixRNAP+fMESB0hBFF6jZkaDr3S\nI6YN6/+3nMqLdnqGfM8o/f0x8CVz1H4rwbzHhBhRdjP65zbJmBrDqo69WPz3SkzX\nxyXeFCnTAgMBAAECggEANQLSEkitNwqFE/1fYJo8fHE0XBKM7Ju8Ly8loLSQFzbI\nAAijN6ri0riMKOHnn7OwBFvM91U5Hd4bivmgR9Jir7AOtdBtxQpyFmuNg0Cj6FXL\nqvnMONVdLfszRMYFuU0fWLEeS3E0W+kDeQyQXEM+MyU+10eYblOz/fdpHU9UEaJx\nYHUmuBofQ+j9jNKsH/oCCy5shot4PBoMEBYCpdzGhDGPIpsP6rEfh01wkYv+sZAp\nOk2fJ2OZAqmLObGHyffsv5XwQOa/HY/UlsGzJqvdET08Y8mDwaz5aVkR/jSWWtG7\n5FGsZWIC4ZV1ud3nTNK4ufbaOIBT/KFUCrFURFbGEQKBgQD3E1uzLrJVaC0KC/qf\nnwVFk3Nm8wgfyk6bZuPFtmaG578F+7AD7xtWwCzR+NcqQGCbkdmljx7b/T218/vf\nLz5VvKJcfcBQdeFcBocSlyV5/8J/yvGNFIMjGSszpwVrGjYqFPpYb9UYjbBRqG9G\nt/nTCon4CvVmfGW+pRkATYAFNwKBgQDDOyhRSqDdmJRFR5W50waQF5JGV82CfHiV\nP4081GL2x59Hw9icwbsPJEINvuWwR16bpRpHmuHAUXgC4KPkTI8PEe1/Q6BFOLL5\nrqUTFXzMynQbspSmpWus6w0HCF412IxTD5CmXKYGr019B/haG4gLLYMN1WzwaOFh\naB21TORORQKBgQC/cQRwhhIwExQy4K1E2RZgnqugbVcyKrNVvhdmrroqdY6RuD7e\nDXsFcMpJt6IgXtl8MTqPCaJDmqkiPvY+LIEENbEoMVe+AFip0XT/dpXXPdEa68jW\nI7qoi2vqDdQo9JpbaP3BYIWhDMg9vWDbTtoIJ/ZXd0ZGLsU3Pv1sOqCjaQKBgB3P\nb6WSBqQvgxxdBOC99zeTUdOJ3qh5BxSLAq7yIzZZXtnfbrjo3/485BUjPAFBtJGB\nkVSzspriFbgiwwO+KO39J82R7uwC71kusKgMVOUUWMxN5WLYyWs67N9RCMmiCjM4\noja02OkWZXec+vAPWiOSzHsVRrAi458y/a5MUmQdAoGBALgF403Fbso56Tq9EpJs\nxh4UhPJA7tgYjoXgslfgPkEDCExWU7s30/r5hYnDVuc+N5lJjvHS+Ph/1iytnA2W\nCnMJmz0r0dR2yqRL8TxLUmnHQr8F8woNCsQIEfHnchTPbO/wOYjHgCHQnSUXMDF3\n9lQh8I4g4xrlgplx7E8BNdKz\n-----END PRIVATE KEY-----\n",
+  "client_email": "visiont-test@pharmacy-394922.iam.gserviceaccount.com",
+  "client_id": "103007648677070855973",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/visiont-test%40pharmacy-394922.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
