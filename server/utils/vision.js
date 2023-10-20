@@ -7,7 +7,7 @@ const { uploadImage } = require('./cloudStorage');
 const { handlePoolLabel, handleBathLabel, handleGymLabel } = require('./labelHandlers');
 
 const client = new ImageAnnotatorClient();
-const key = './hotels-402512-b8151a4e4515.json';
+const key = './hotels-402512-b1225942f911.json';
 const labelHandlers = [handlePoolLabel, handleBathLabel, handleGymLabel]; 
 
 async function analyzeImagesInHotels() {
