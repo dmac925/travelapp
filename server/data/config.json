@@ -1,7 +1,10 @@
 {
     "googleCloud": {
-      "apiKey": "b1225942f911ee9eea0df52c788c34411377e688",
+      "apiKey": "885d95abc7fb8622a1790d9b9e21f58d68951094",
       "storageBucket": "hotelsbucket01"
     },
-    "keyFilename": "../hotels-402512-b1225942f911.json"
+    "keyFilename": "../hotels-402512-885d95abc7fb.json"
   }
+
+
+

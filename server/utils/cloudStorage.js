@@ -1,7 +1,8 @@
 const config = require('../data/config.json');
 const { Storage } = require('@google-cloud/storage');
-const keyFilename = './hotels-402512-b1225942f911.json';
+const keyFilename = './hotels-402512-885d95abc7fb.json';
 const storage = new Storage({ keyFilename });
+
 
 async function uploadImage(hotel, image, handledLabel, imageBuffer = null) {
     try {

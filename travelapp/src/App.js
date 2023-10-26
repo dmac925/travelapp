@@ -11,6 +11,7 @@ import Register from './views/Register';
 import Login from './views/Login';
 import UserContext from './UserContext';
 import HotelResults from './views/HotelResults';
+import HotelListPage from './views/HotelListPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -87,6 +88,8 @@ function App() {
         />
 
         <Route path ="/HotelResults" element={<HotelResults />} />
+        <Route path ="/HotelListPage" element={<HotelListPage />} />
+
           <Route path ="/register" element={<Register />} />
           <Route path ="/login" element={<Login />} />
           <Route path="/allUsers" element={isAdmin ? <AllUsers /> : <Navigate to="/login" />} />

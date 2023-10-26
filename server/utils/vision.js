@@ -7,22 +7,27 @@ const { uploadImage } = require('./cloudStorage');
 const { handlePoolLabel, handleBathLabel, handleGymLabel } = require('./labelHandlers');
 
 const client = new ImageAnnotatorClient();
-const key = './hotels-402512-b1225942f911.json';
+const key = './hotels-402512-885d95abc7fb.json';
 const labelHandlers = [handlePoolLabel, handleBathLabel, handleGymLabel]; 
 
 async function analyzeImagesInHotels() {
-  let imageBuffer = null;
-  try {
+    let imageBuffer = null;
+    try {
       const hotels = await Hotel.find();
-
+  
       for (const hotel of hotels) {
-          console.log(`Analyzing images for hotel: ${hotel.name}`);
-
-          for (const image of hotel.images) {
-              console.log(`Processing image for hotel: ${hotel.name}`); 
-
-              if (!image.processed) { 
-                  console.log(`Image not processed yet for hotel: ${hotel.name}`); 
+        console.log(`Analyzing images for hotel: ${hotel.name}`);
+  
+        if (!Array.isArray(hotel.hotelImages)) {
+          console.error(`Hotel images for ${hotel.name} are not an array.`);
+          continue; // Skip this hotel and move to the next
+        }
+  
+        for (const image of hotel.hotelImages) {
+          console.log(`Processing image for hotel: ${hotel.name}`);
+  
+          if (!image.processed) {
+            console.log(`Image not processed yet for hotel: ${hotel.name}`);
 
                   let result;
 
@@ -96,4 +101,4 @@ async function analyzeImagesInHotels() {
   }
 }
 
-analyzeImagesInHotels();
+module.exports = analyzeImagesInHotels;

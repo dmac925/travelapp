@@ -16,18 +16,24 @@ function HotelResults() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
 
+  
+
+
   useEffect(() => {
     axios.get('http://localhost:4000/hotels')
       .then(response => {
         console.log('Response:', response.data);
-
+  
         setHotels(response.data);
-        
-      
-        const labels = [...new Set(response.data.flatMap(hotel => hotel.images.map(img => img.label)))];
+  
+        // Extract labels from hotelImages
+        const labels = [...new Set(response.data.flatMap(hotel => (
+          hotel.hotelImages.map(image => image.label)
+        )))];
+  
         setImageLabels(labels);
-
-        setColumnSelections(Array(4).fill(labels[0]));
+  
+        setColumnSelections(Array(3).fill(labels[0]));
       })
       .catch(error => {
         console.error('Error fetching hotel data:', error);
@@ -44,6 +50,25 @@ function HotelResults() {
     setModalVisible(false);
   };
 
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (modalVisible && selectedImage) {
+        const modal = document.getElementById('modal');
+        if (modal && !modal.contains(e.target)) {
+          closeModal();
+        }
+      }
+    };
+
+    window.addEventListener('click', handleOutsideClick);
+    return () => {
+      window.removeEventListener('click', handleOutsideClick);
+    };
+  }, [modalVisible, selectedImage]);
+
+  const numberOfColumns = 3;
+
+
   return (
     <div style={styles.container}>
       <HorizontalSlider>
@@ -51,62 +76,62 @@ function HotelResults() {
           {/* ... */}
           <thead>
             <tr>
-              <th style={styles.hotelNameHeader}>Hotel Name</th>
-              {columnSelections.map((selection, index) => (
+            <th style={styles.hotelNameHeader}>Hotel Name</th>
+            {columnSelections.slice(0, numberOfColumns).map((selection, index) => (
                 <th key={index} style={styles.columnSelectorHeader}>
-                  {index < 4 ? (
-                    <select
-                      value={selection}
-                      onChange={(e) => {
-                        const newSelections = [...columnSelections];
-                        newSelections[index] = e.target.value;
-                        setColumnSelections(newSelections);
-                      }}
-                    >
-                      {imageLabels.map((label) => (
-                        <option key={label} value={label}>
-                          {label}
-                        </option>
-                      ))}
-                    </select>
-                  ) : (
-                    <span>&nbsp;</span>
-                  )}
+                  <select
+                    value={selection}
+                    onChange={(e) => {
+                      const newSelections = [...columnSelections];
+                      newSelections[index] = e.target.value;
+                      setColumnSelections(newSelections);
+                    }}
+                  >
+                    {imageLabels.map((label) => (
+                      <option key={label} value={label}>
+                        {label}
+                      </option>
+                    ))}
+                  </select>
                 </th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {hotels.map((hotel, index) => (
-              <tr key={index}>
-                  <td style={styles.hotelName}>
-                {hotel.name}
-                <StarComponent stars={hotel.stars} />
+  {hotels.map((hotel, index) => {
+    const firstRoomSize = hotel.hotelRooms && hotel.hotelRooms[0] && hotel.hotelRooms[0].roomSize;
+    return (
+      <tr key={index}>
+        <td style={styles.hotelName}>
+          {hotel.name}
+          <StarComponent stars={hotel.stars} />
+          {firstRoomSize && <div style={{ fontSize: '12px', marginTop: '5px' }}>{`Room Size: ${firstRoomSize}`}</div>}
+        </td>
+        {columnSelections.slice(0, numberOfColumns).map((label, colIndex) => {
+          const image = hotel.hotelImages.find(img => img.label === label);
+          return (
+            <td key={colIndex} style={styles.amenityCell}>
+              {image ? (
+                <img
+                  src={image.url}
+                  alt={label}
+                  style={styles.amenityImage}
+                  onClick={() => openModal(image)}
+                />
+              ) : (
+                <textarea
+                  style={styles.amenityTextBox}
+                  placeholder="Image not available"
+                  disabled
+                />
+              )}
             </td>
-                {columnSelections.map((label, colIndex) => {
-                  const image = hotel.images.find(img => img.label === label);
-                  return (
-                    <td key={colIndex} style={styles.amenityCell}>
-                      {image ? (
-                        <img
-                          src={image.url}
-                          alt={label}
-                          style={styles.amenityImage}
-                          onClick={() => openModal(image)}
-                        />
-                      ) : (
-                        <textarea
-                          style={styles.amenityTextBox}
-                          placeholder="Image not available"
-                          disabled
-                        />
-                      )}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
-          </tbody>
+          );
+        })}
+      </tr>
+    );
+  })}
+</tbody>
         </table>
       </HorizontalSlider>
       {modalVisible && selectedImage && (
