@@ -75,6 +75,61 @@ class hotelController {
         }
     }
 
+    getAverageRatings = async (req, res) => {
+        const { hotel_id } = req.params;
+    
+        try {
+            const hotel = await Hotel.findOne({ _id: hotel_id });
+            const reviews = hotel.reviews;  // Assuming you have a 'reviews' field in your Hotel schema
+    
+            if (!reviews) {
+                return res.status(404).json({ error: 'Reviews not found for this hotel.' });
+            }
+    
+            console.log("Fetched reviews:", reviews);
+            const monthlyRatings = this.calculateAverageRatings(reviews);
+            console.log("Calculated monthly ratings:", monthlyRatings);
+    
+            res.json(monthlyRatings);
+        } catch (e) {
+            console.error("Error in getAverageRatings:", e);
+            res.status(500).json({ error: 'An error occurred while fetching average ratings.' });
+        }
+    }
+
+calculateAverageRatings(reviews) {
+    const monthlyRatings = {};
+
+    reviews.forEach(review => {
+        const date = new Date(review.publishedAtDate);
+        const monthYearKey = `${date.getMonth() + 1}-${date.getFullYear()}`; 
+
+        if (!monthlyRatings[monthYearKey]) {
+            monthlyRatings[monthYearKey] = {
+                totalRating: 0,
+                count: 0,
+            };
+        }
+
+        monthlyRatings[monthYearKey].totalRating += review.stars;
+        monthlyRatings[monthYearKey].count++;
+    });
+
+    const sortedKeys = Object.keys(monthlyRatings).sort();
+    const averageRatings = sortedKeys.map(key => (monthlyRatings[key].totalRating / monthlyRatings[key].count).toFixed(2));
+
+    return {
+        labels: sortedKeys,
+        datasets: [{
+            label: 'Average Rating',
+            data: averageRatings,
+            backgroundColor: 'rgba(75,192,192,0.2)', 
+            borderColor: 'rgba(75,192,192,1)',
+            borderWidth: 1,
+        }],
+    };
+}
+
 };
 
 module.exports = new hotelController();

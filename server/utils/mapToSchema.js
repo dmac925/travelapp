@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 const Hotel = require('../models/hotelSchema');
 const mongoose = require('mongoose');
@@ -12,11 +12,19 @@ const extractRoomSize = (features) => {
     let match = feature.match(/\d+\s(m²|feet²)/);
     if (match) return match[0];
   }
-  return null;  // Default value if no room size is found
+  return null;  
+}
+
+function formatPostalCode(postalCode) {
+  let cleaned = postalCode.replace(/\s/g, "");  // Remove any spaces
+  return `${cleaned.slice(0, -3)} ${cleaned.slice(-3)}`; // Insert space before last 3 characters
 }
 
 const mapToSchema = (hotelData) => {
   let uniqueRoomTypes = new Set();
+
+  const latitude = parseFloat(hotelData.location.lat);
+  const longitude = parseFloat(hotelData.location.lng);
 
   // Filter out duplicates based on roomType
   const uniqueRooms = hotelData.rooms.filter(room => {
@@ -29,35 +37,26 @@ const mapToSchema = (hotelData) => {
 
   return {
     name: hotelData.name,
-    // 'brand' is not available in the given data, setting it to a default value
-    brand: "Unknown",
     location: {
       lat: hotelData.location.lat,
       lng: hotelData.location.lng
     },
     address: {
       full: hotelData.address.full,
-      postalCode: hotelData.address.postalCode,
-      street: hotelData.address.street,
+      postalCode: formatPostalCode(hotelData.address.postalCode),
+      street1: hotelData.address.street,
       country: hotelData.address.country,
       region: hotelData.address.region
     },
-    stars: hotelData.stars,
+    hotelClass: hotelData.stars,
     price: hotelData.price,
     currency: hotelData.currency,
-    // Setting ratings to default as they are not available in the given data
-    bookingRating: hotelData.rating, // Using this for now
-    tripadvisorRating: null,
-    googleRating: null,
+    bookingRating: hotelData.rating, 
+    bookingReviewNum: hotelData.reviews,
+    bookingDescription: hotelData.description,
     checkIn: hotelData.checkIn,
     checkOut: hotelData.checkOut,
-    // 'totalRooms' is not available in the data, setting it to a default value
-    totalRooms: null,
-    // Mapping facilities to a string for now, you can modify as needed
     hotelFacilities: hotelData.facilities.map(f => f.name).join(", "),
-    // 'openDate' and 'refurbishedDate' are not available in the data
-    openDate: null,
-    refurbishedDate: null,
     hotelRooms: uniqueRooms.map(room => ({
       roomType: room.roomType,
       roomSize: extractRoomSize(room.features),
@@ -65,36 +64,41 @@ const mapToSchema = (hotelData) => {
       roomPrice: room.price,
       roomPriceCurr: room.currency,
     })),
-    hotelImages: hotelData.images.map(img => ({
-      label: 'Hotel Image',
-      url: img,
-      imageLabels: [],
-      renamedImages: [{
-        processed: false,
-        label: 'Renamed Image',
-        url: img,
-        imageLabels: []
-      }]
-    })),
-    imageArchive: []
   };
 }
 
 const filePath = path.join(__dirname, 'bigdata.jsonl');
 
-fs.readFileSync(filePath, 'utf-8').split('\n').forEach(line => {
-  if (line) {
-    try {
-      const hotelData = JSON.parse(line);
-      const mappedHotel = mapToSchema(hotelData);
+const hotelsToInsert = [];
 
-      // Create an instance of the model and save it to the database
-      const hotel = new Hotel(mappedHotel);
-      hotel.save()
-        .then(() => console.log('Hotel data saved successfully'))
-        .catch(err => console.error('Error saving hotel data:', err));
-    } catch (error) {
-      console.error('Error parsing JSON:', error);
+async function loadData() {
+  try {
+    const data = await fs.readFile(filePath, 'utf-8');
+    const lines = data.split('\n');
+    for (const line of lines) {
+      if (line) {
+        try {
+          const hotelData = JSON.parse(line);
+          const mappedHotel = mapToSchema(hotelData);
+
+          const hotel = new Hotel(mappedHotel);
+          hotelsToInsert.push(hotel);
+
+        } catch (error) {
+          console.error('Error parsing JSON:', error);
+        }
+      }
     }
+
+    if (hotelsToInsert.length) {
+      Hotel.insertMany(hotelsToInsert)
+        .then(() => console.log('All hotel data saved successfully'))
+        .catch(err => console.error('Error saving hotel data:', err));
+    }
+
+  } catch (error) {
+    console.error('Error reading the file:', error);
   }
-});
+}
+
+loadData();

@@ -1,1 +1,11 @@
-**/node_modules
+# Ignore node_modules directory
+/node_modules
+
+# Ignore .env file
+.env
+
+# Ignore the configuration file
+server/data/config.json
+
+# Ignore Google service account key
+server/hotels-402512-dae3f1bd8555.json

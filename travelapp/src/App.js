@@ -11,7 +11,10 @@ import Register from './views/Register';
 import Login from './views/Login';
 import UserContext from './UserContext';
 import HotelResults from './views/HotelResults';
+import ReviewsTable from './views/reviewsTable';
 import HotelListPage from './views/HotelListPage';
+import HotelDetailPage from './views/HotelDetailPage';
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -87,8 +90,11 @@ function App() {
           element={isLoggedIn ? <Navigate to="/myTasks" /> : <Register />}
         />
 
+        <Route path ="/reviewsTable" element={<ReviewsTable />} />
         <Route path ="/HotelResults" element={<HotelResults />} />
         <Route path ="/HotelListPage" element={<HotelListPage />} />
+        <Route path="/hotel/:hotelId" element={<HotelDetailPage />} />
+
 
           <Route path ="/register" element={<Register />} />
           <Route path ="/login" element={<Login />} />

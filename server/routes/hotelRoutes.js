@@ -4,7 +4,6 @@ const express = require('express'),
     const googleCloudStorage = require('../utils/cloudStorage');
 
 
-router.get('/', controller.findAll);
 
 router.get('/brands', controller.findBrands); 
 
@@ -15,5 +14,9 @@ router.post('/delete', controller.delete);
 router.post('/update', controller.update);
 
 router.get('/:hotel_id', controller.findOne);  
+
+router.get('/:hotel_id/average-ratings', controller.getAverageRatings);
+
+router.get('/', controller.findAll);
 
 module.exports = router;

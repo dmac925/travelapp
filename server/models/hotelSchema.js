@@ -1,31 +1,61 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const reviewSchema = new Schema({
+    reviewerName: { type: String, default: null },
+    reviewerCount: { type: Number, default: 0 },
+    localGuide: { type: Boolean, default: false },
+    text: { type: String, default: null },
+    publishedAtDate: { type: Date },
+    stars: { type: Number },
+    reviewLiked: { type: Number, default: 0 },
+    reviewType: { type: String }
+});
+
 const hotelSchema = new Schema({
     name: { type: String, required: true },
     brand: { type: String },
     location: {
-        lat: { type: String, required: true },
-        lng: { type: String, required: true }
+        lat: { type: Number, required: true },
+        lng: { type: Number, required: true }
     },
     address: {
         full: { type: String, required: true },
         postalCode: { type: String },
-        street: { type: String },
+        street1: { type: String },
+        street2: { type: String },
+        city: { type: String },
+        state: { type: String },
+        region: { type: String },
         country: { type: String },
-        region: { type: String }
+        neighbourhood: { type: String },
     },
-    stars: { type: Number, required: true, min: 1, max: 5 },
-    price: { type: Number, required: true },
-    currency: { type: String, required: true },
+    hotelClass: { type: Number },
+    hotelClassAgency: { type: String },
+    description: { type: String },
+    price: { type: Number },
+    currency: { type: String },
     bookingRating: { type: Number },
+    bookingReviewNum: { type: Number },
+    bookingDescription: { type: String },
     tripadvisorRating: { type: Number },
+    tripadvisorReviewNum: { type: Number },
+    tripadvisorDescription: { type: String },
     googleRating: { type: Number },
-    checkIn: { type: String, required: true },
-    checkOut: { type: String, required: true },
+    googleReviewNum: { type: Number },
+    googleDescription: { type: String },
+    reviews: [reviewSchema], 
+    combinedReviewText: { type: String, default: null },
+    checkIn: { type: String },
+    checkOut: { type: String },
     totalRooms: { type: Number },
     hotelFacilities: { type: String },
-    openDate: { type: Date },
+    openingDate: { type: Date },
+    refurbDate: { type: Date },
+    website: { type: String },
+    email: { type: String },
+    phone: { type: String },
+    similarGoogleHotels: { type: String },
 refurbishedDate: { type: Date },
     hotelRooms: [{
         roomType: { type: String, default: 'Standard' },
@@ -38,18 +68,6 @@ refurbishedDate: { type: Date },
             label: { type: String },  
         }]
     }],
-    hotelImages: [{
-        label: { type: String, required: true },
-        url: { type: String, required: true },
-        imageLabels: [String],
-        renamedImages: [{
-            processed: { type: Boolean, default: false },
-            label: { type: String, required: true },
-            url: { type: String, required: true },
-            imageLabels: [String]
-        }]
-    }],
-    imageArchive: [String]
 });
 
 module.exports = mongoose.model("Hotel", hotelSchema);
