@@ -5,7 +5,10 @@
 .env
 
 # Ignore the configuration file
-server/data/config.json
+/data/config.json
+
 
 # Ignore Google service account key
-server/hotels-402512-9fba49f91568.json
+/hotels-402512-0f3c9fc2a1d9.json
+
+
