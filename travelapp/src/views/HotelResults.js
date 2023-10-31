@@ -20,7 +20,7 @@ function HotelResults() {
 
 
   useEffect(() => {
-    axios.get('http://localhost:4000/hotels')
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/hotels`)
       .then(response => {
         console.log('Response:', response.data);
   

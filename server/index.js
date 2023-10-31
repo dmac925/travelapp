@@ -1,6 +1,6 @@
+require ("dotenv").config();
 const express = require('express');
 const app = express();
-require ("dotenv").config();
 const port = process.env.PORT || 5060;
 const mongoose = require("mongoose");
 
@@ -14,14 +14,22 @@ async function connecting() {
     try {
         await mongoose.connect(process.env.MONGO);
         console.log('Connected to the DB')
-     }  catch (error) {
-            console.log('ERROR: Seems like your DB is not running, please start it up !!!');
-            console.error(error);
-        }
+    } catch (error) {
+        console.log('ERROR: Seems like your DB is not running, please start it up !!!');
+        console.error(error);
+    }
 }
 
 const cors = require('cors');
 app.use(cors());
+
+// Add the cache prevention headers
+app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate'); 
+    res.setHeader('Pragma', 'no-cache'); 
+    res.setHeader('Expires', '0');
+    next();
+});
 
 app.use("/users", require("./routes/usersRoutes"));
 app.use("/api", require("./routes/openai"));

@@ -7,8 +7,10 @@ const ReviewTable = () => {
     const [locationFilter, setLocationFilter] = useState('');
     const [startDateFilter, setStartDateFilter] = useState('');
     const [endDateFilter, setEndDateFilter] = useState('');
+    const [sourceFilter, setSourceFilter] = useState(''); // State for the source filter
 
-    const hotelId = '6540f3ec3f123334c6bdf3cf';
+
+    const hotelId = '654153dce41b0b507f231a34';
 
     useEffect(() => {
         const fetchReviews = async () => {
@@ -35,14 +37,15 @@ const ReviewTable = () => {
         const matchesLocation = !locationFilter || review.location.includes(locationFilter);
         const matchesStartDate = !startDateFilter || new Date(review.date) >= new Date(startDateFilter);
         const matchesEndDate = !endDateFilter || new Date(review.date) <= new Date(endDateFilter);
-        return matchesLocation && matchesStartDate && matchesEndDate;
+        const matchesSource = !sourceFilter || review.source === sourceFilter; 
+        return matchesLocation && matchesStartDate && matchesEndDate && matchesSource; 
     });
 
     return (
         <div className="review-table">
             <h2>Reviews ({filteredReviews.length})</h2> {/* Adjusted to reflect the actual number of reviews */}
             <div className="filters">
-                <div className="filter">
+            <div className="filter">
                     <label>Location: </label>
                     <input
                         type="text"
@@ -66,6 +69,17 @@ const ReviewTable = () => {
                         value={endDateFilter}
                         onChange={(e) => setEndDateFilter(e.target.value)}
                     />
+                </div>
+                <div className="filter"> {/* New filter input for source */}
+                    <label>Source: </label>
+                    <select
+                        value={sourceFilter}
+                        onChange={(e) => setSourceFilter(e.target.value)}
+                    >
+                        <option value="">All Sources</option>
+                        <option value="TripAdvisor">TripAdvisor</option>
+                        <option value="Google">Google</option>
+                    </select>
                 </div>
             </div>
             
