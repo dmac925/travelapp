@@ -1,30 +1,35 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './reviewTable.css';
 
 const ReviewTable = () => {
-    const reviews = [
-        {
-            date: "12/06/2021",
-            location: "Leo Tap",
-            address: "1464 W Erie St",
-            rating: 5.0,
-            source: "Google",
-            summary: "They do a pretty good job over there and forgot things too"
-        },
-        {
-            date: "12/04/2021",
-            location: "Aries Cafe",
-            address: "2800 Country Club Dr",
-            rating: 5.0,
-            source: "Google",
-            summary: "They have the most beautiful Christmas lights and tree."
-        },
-        // ... add other reviews
-    ];
-
+    const [reviews, setReviews] = useState([]);
     const [locationFilter, setLocationFilter] = useState('');
     const [startDateFilter, setStartDateFilter] = useState('');
     const [endDateFilter, setEndDateFilter] = useState('');
+
+    const hotelId = '6540f3ec3f123334c6bdf3cf';
+
+    useEffect(() => {
+        const fetchReviews = async () => {
+            try {
+                const response = await axios.get(`http://localhost:4000/hotels/${hotelId}`);
+                if (response.data && response.data.reviews) {
+                    setReviews(response.data.reviews.map(review => ({
+                        date: new Date(review.publishedAtDate).toLocaleDateString(),
+                        location: response.data.name,
+                        address: response.data.address.full,
+                        rating: review.stars,
+                        source: review.reviewType,
+                        summary: review.text || "No comment provided"
+                    })));
+                }
+            } catch (error) {
+                console.error("Failed to fetch reviews:", error);
+            }
+        };
+        fetchReviews();
+    }, []);
 
     const filteredReviews = reviews.filter(review => {
         const matchesLocation = !locationFilter || review.location.includes(locationFilter);
@@ -35,8 +40,8 @@ const ReviewTable = () => {
 
     return (
         <div className="review-table">
-            <h2>Reviews (8)</h2>
-              <div className="filters">
+            <h2>Reviews ({filteredReviews.length})</h2> {/* Adjusted to reflect the actual number of reviews */}
+            <div className="filters">
                 <div className="filter">
                     <label>Location: </label>
                     <input
@@ -76,10 +81,10 @@ const ReviewTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {reviews.map((review, index) => (
+                {filteredReviews.map((review, index) => (
                         <tr key={index}>
                             <td>{review.date}</td>
-                            <td>{review.location}<br/>{review.address}</td>
+                            <td>{review.location}</td>
                             <td>{review.rating}</td>
                             <td>{review.source}</td>
                             <td>{review.summary}</td>

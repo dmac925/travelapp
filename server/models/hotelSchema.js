@@ -9,6 +9,8 @@ const reviewSchema = new Schema({
     publishedAtDate: { type: Date },
     stars: { type: Number },
     reviewLiked: { type: Number, default: 0 },
+    responseFromOwnerDate: { type: Date },
+    responseFromOwnerText: { type: String, default: null },
     reviewType: { type: String }
 });
 
@@ -56,7 +58,8 @@ const hotelSchema = new Schema({
     email: { type: String },
     phone: { type: String },
     similarGoogleHotels: { type: String },
-refurbishedDate: { type: Date },
+    refurbishedDate: { type: Date },
+    parentCompany: { type: String},
     hotelRooms: [{
         roomType: { type: String, default: 'Standard' },
         roomSize: { type: String },

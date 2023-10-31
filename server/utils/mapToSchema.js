@@ -1,9 +1,10 @@
+require('dotenv').config();
 const fs = require('fs').promises;
 const path = require('path');
 const Hotel = require('../models/hotelSchema');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://andrewg:barcelonacode@hoteltesting.fxjzcen.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Could not connect to MongoDB:', err));
 
@@ -67,7 +68,7 @@ const mapToSchema = (hotelData) => {
   };
 }
 
-const filePath = path.join(__dirname, 'bigdata.jsonl');
+const filePath = path.join(__dirname, 'bookingData.jsonl');
 
 const hotelsToInsert = [];
 

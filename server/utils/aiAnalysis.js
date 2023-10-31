@@ -1,3 +1,4 @@
+require('dotenv').config();
 const OpenAI = require("openai").default;
 const mongoose = require('mongoose');
 const Hotel = require('../models/hotelSchema');
@@ -6,7 +7,7 @@ const path = require('path');
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-mongoose.connect('mongodb+srv://andrewg:barcelonacode@hoteltesting.fxjzcen.mongodb.net/', {
+mongoose.connect(process.env.MONGO, {
   useNewUrlParser: true, useUnifiedTopology: true 
 }).then(() => {
     console.log('Connected to MongoDB');

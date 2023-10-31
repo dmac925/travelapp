@@ -80,7 +80,7 @@ class hotelController {
     
         try {
             const hotel = await Hotel.findOne({ _id: hotel_id });
-            const reviews = hotel.reviews;  // Assuming you have a 'reviews' field in your Hotel schema
+            const reviews = hotel.reviews;  
     
             if (!reviews) {
                 return res.status(404).json({ error: 'Reviews not found for this hotel.' });
@@ -97,38 +97,46 @@ class hotelController {
         }
     }
 
-calculateAverageRatings(reviews) {
-    const monthlyRatings = {};
-
-    reviews.forEach(review => {
-        const date = new Date(review.publishedAtDate);
-        const monthYearKey = `${date.getMonth() + 1}-${date.getFullYear()}`; 
-
-        if (!monthlyRatings[monthYearKey]) {
-            monthlyRatings[monthYearKey] = {
-                totalRating: 0,
-                count: 0,
-            };
-        }
-
-        monthlyRatings[monthYearKey].totalRating += review.stars;
-        monthlyRatings[monthYearKey].count++;
-    });
-
-    const sortedKeys = Object.keys(monthlyRatings).sort();
-    const averageRatings = sortedKeys.map(key => (monthlyRatings[key].totalRating / monthlyRatings[key].count).toFixed(2));
-
-    return {
-        labels: sortedKeys,
-        datasets: [{
-            label: 'Average Rating',
-            data: averageRatings,
-            backgroundColor: 'rgba(75,192,192,0.2)', 
-            borderColor: 'rgba(75,192,192,1)',
-            borderWidth: 1,
-        }],
-    };
-}
+    calculateAverageRatings(reviews) {
+        const monthlyRatings = {};
+    
+        reviews.forEach(review => {
+            const date = new Date(review.publishedAtDate);
+            const monthYearKey = `${date.getMonth() + 1}-${date.getFullYear()}`; 
+    
+            if (!monthlyRatings[monthYearKey]) {
+                monthlyRatings[monthYearKey] = {
+                    totalRating: 0,
+                    count: 0,
+                };
+            }
+    
+            monthlyRatings[monthYearKey].totalRating += review.stars;
+            monthlyRatings[monthYearKey].count++;
+        });
+    
+        const sortedKeys = Object.keys(monthlyRatings).sort();
+        const averageRatings = sortedKeys.map(key => (monthlyRatings[key].totalRating / monthlyRatings[key].count).toFixed(2));
+        const reviewCounts = sortedKeys.map(key => monthlyRatings[key].count); 
+    
+        return {
+            labels: sortedKeys,
+            datasets: [{
+                label: 'Average Rating',
+                data: averageRatings,
+                backgroundColor: 'rgba(75,192,192,0.2)', 
+                borderColor: 'rgba(75,192,192,1)',
+                borderWidth: 1,
+            },
+            {
+                label: 'Review Count', 
+                data: reviewCounts,
+                backgroundColor: 'rgba(255,99,132,0.2)', 
+                borderColor: 'rgba(255,99,132,1)',
+                borderWidth: 1,
+            }],
+        };
+    }
 
 };
 
