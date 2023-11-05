@@ -12,13 +12,13 @@ function HotelListPage() {
     location: '',
     price: '',
   });
-  const [selectedHotel, setSelectedHotel] = useState(null); 
+  const [selectedHotel, setSelectedHotel] = useState(null); // To keep track of the selected hotel
   const [expandedRoom, setExpandedRoom] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/hotels`);
+        const response = await axios.get('http://localhost:4000/hotels');
         setHotels(response.data);
       } catch (error) {
         console.error('Error fetching hotel data:', error);

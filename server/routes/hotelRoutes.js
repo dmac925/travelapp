@@ -15,6 +15,10 @@ router.post('/update', controller.update);
 
 router.get('/:hotel_id', controller.findOne);  
 
+router.post('/generate-response', controller.getReviewResponse);
+
+router.get('/:hotel_id/sentiment-analysis', controller.getSentimentAnalysis);
+
 router.get('/:hotel_id/average-ratings', controller.getAverageRatings);
 
 router.get('/', controller.findAll);

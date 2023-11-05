@@ -14,6 +14,11 @@ import HotelResults from './views/HotelResults';
 import ReviewsTable from './views/reviewsTable';
 import HotelListPage from './views/HotelListPage';
 import HotelDetailPage from './views/HotelDetailPage';
+import SentimentDashboard from './views/SentimentDashboard';
+import KeywordFrequency from './views/keywordFrequency';
+import KeywordContainer from './views/KeywordContainer';
+import ListingsTable from './views/ListingsTable';
+
 
 
 function App() {
@@ -91,6 +96,10 @@ function App() {
         />
 
         <Route path ="/reviewsTable" element={<ReviewsTable />} />
+        <Route path ="/ListingsTable" element={<ListingsTable />} />
+        <Route path ="/keywordFrequency" element={<KeywordFrequency />} />
+        <Route path ="/KeywordContainer" element={<KeywordContainer />} />
+        <Route path ="/SentimentDashboard" element={<SentimentDashboard />} />
         <Route path ="/HotelResults" element={<HotelResults />} />
         <Route path ="/HotelListPage" element={<HotelListPage />} />
         <Route path="/hotel/:hotelId" element={<HotelDetailPage />} />

@@ -3,11 +3,10 @@
     "version": "1.0.0",
     "description": "taskapp for organising your life",
     "main": "./server/index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "cd ./server && node index.js",
-      "build": "cd ./server && npm i"
-    },
+   "scripts": {
+    "start": "cd ./server && node index.js",
+    "build": "cd ./travelapp && npm run build"
+},
     "engines": {
       "node": "18.x"
     },

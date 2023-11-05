@@ -64,6 +64,14 @@ async function mergeGoogleReviews() {
                         // Add the combined text to the hotel
                         updateOps.combinedReviewText = combinedText;
                     }
+
+                    if (review.totalScore && !existingHotel.googleRating) {
+                        updateOps.googleRating = review.totalScore;
+                    }
+
+                    if (review.reviewsCount && !existingHotel.googleReviewNum) {
+                        updateOps.googleReviewNum = review.reviewsCount;
+                    }
         
                     if (Object.keys(updateOps).length > 0) {
                         bulkUpdates.push({

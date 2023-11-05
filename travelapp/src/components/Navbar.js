@@ -21,9 +21,14 @@ const MyNavbar = ({ isLoggedIn, isAdmin, logout }) => {
             )}
             {isLoggedIn && (
               <>
-                <Nav.Link><NavLink to="/hotelResults">Hotels</NavLink></Nav.Link>
-                <Nav.Link><NavLink to="/hotelListPage">Hotels</NavLink></Nav.Link>
-                <Nav.Link><NavLink to="/reviewsTable">Hotels</NavLink></Nav.Link>
+                <Nav.Link><NavLink to="/hotelResults">Hotel Results</NavLink></Nav.Link>
+                <Nav.Link><NavLink to="/hotelListPage">Hotel List</NavLink></Nav.Link>
+                <Nav.Link><NavLink to="/ListingsTable">Listings Table</NavLink></Nav.Link>
+                <Nav.Link><NavLink to="/reviewsTable">Reviews Table</NavLink></Nav.Link>
+                <Nav.Link><NavLink to="/SentimentDashboard">Sentiment</NavLink></Nav.Link>                <Nav.Link><NavLink to="/keywordFrequency">Keyword Frequency</NavLink></Nav.Link>
+                <Nav.Link><NavLink to="/KeywordContainer">Keyword Container</NavLink></Nav.Link>
+
+
 
               </>
             )}

@@ -1,6 +1,20 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const sentimentAnalysisSchema = new Schema({
+    categories: [{
+        category: { type: String },
+        keywords: [{ 
+            keyword: { type: String },
+            sentiment: { type: String },
+            mentions: { type: Number }
+        }]
+    }],
+    improvements: { type: String }, // Field to store general improvements
+    apiResponseId: { type: String } // Field to store OpenAI API response ID
+});
+
+
 const reviewSchema = new Schema({
     reviewerName: { type: String, default: null },
     reviewerCount: { type: Number, default: 0 },
@@ -59,7 +73,14 @@ const hotelSchema = new Schema({
     phone: { type: String },
     similarGoogleHotels: { type: String },
     refurbishedDate: { type: Date },
-    parentCompany: { type: String},
+    parentCompany: { type: String },
+    monthlyReviews: [{
+        monthYear: String,
+        reviewTexts: [String],
+        averageRating: Number,
+        reviewCount: Number,
+        sentimentAnalysis: [sentimentAnalysisSchema],
+    }],
     hotelRooms: [{
         roomType: { type: String, default: 'Standard' },
         roomSize: { type: String },
@@ -74,3 +95,4 @@ const hotelSchema = new Schema({
 });
 
 module.exports = mongoose.model("Hotel", hotelSchema);
+

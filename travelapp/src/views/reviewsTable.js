@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ReviewResponseModal from './reviewResponseModal'; 
 import './reviewTable.css';
 
 const ReviewTable = () => {
@@ -7,15 +8,27 @@ const ReviewTable = () => {
     const [locationFilter, setLocationFilter] = useState('');
     const [startDateFilter, setStartDateFilter] = useState('');
     const [endDateFilter, setEndDateFilter] = useState('');
-    const [sourceFilter, setSourceFilter] = useState(''); // State for the source filter
+    const [sourceFilter, setSourceFilter] = useState(''); 
+    const [selectedReview, setSelectedReview] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
 
-    const hotelId = '654153dce41b0b507f231a34';
+    const hotelId = '654277c1abc0c6a7612d8b1a';
+
+    const handleRespondClick = (review) => {
+        setSelectedReview(review);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
 
     useEffect(() => {
         const fetchReviews = async () => {
             try {
                 const response = await axios.get(`http://localhost:4000/hotels/${hotelId}`);
+                console.log(response);
                 if (response.data && response.data.reviews) {
                     setReviews(response.data.reviews.map(review => ({
                         date: new Date(review.publishedAtDate).toLocaleDateString(),
@@ -104,11 +117,16 @@ const ReviewTable = () => {
                             <td>{review.summary}</td>
                             <td>
                                 {/* Here you can add logic or buttons for response */}
-                                <button>Respond</button>
+                                <button onClick={() => handleRespondClick(review)}>Respond</button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
+                <ReviewResponseModal 
+                review={selectedReview} 
+                isOpen={isModalOpen} 
+                onClose={handleCloseModal}
+            />
             </table>
         </div>
     );
