@@ -3,10 +3,11 @@
     "version": "1.0.0",
     "description": "taskapp for organising your life",
     "main": "./server/index.js",
-   "scripts": {
-    "start": "cd ./server && node index.js",
-    "build": "cd ./travelapp && npm run build"
-},
+    "scripts": {
+      "preinstall": "npm install --prefix ./travelapp",
+      "start": "cd ./server && node index.js",
+      "build": "cd ./travelapp && npm run build"
+  },
     "engines": {
       "node": "18.x"
     },
