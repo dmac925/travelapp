@@ -5,13 +5,12 @@ import './reviewTable.css';
 
 const ReviewTable = () => {
     const [reviews, setReviews] = useState([]);
-    const [locationFilter, setLocationFilter] = useState('');
+    const [summaryFilter, setSummaryFilter] = useState(''); // Renamed from locationFilter
     const [startDateFilter, setStartDateFilter] = useState('');
     const [endDateFilter, setEndDateFilter] = useState('');
     const [sourceFilter, setSourceFilter] = useState(''); 
     const [selectedReview, setSelectedReview] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
 
     const hotelId = '654277c1abc0c6a7612d8b1a';
 
@@ -47,11 +46,11 @@ const ReviewTable = () => {
     }, []);
 
     const filteredReviews = reviews.filter(review => {
-        const matchesLocation = !locationFilter || review.location.includes(locationFilter);
+        const matchesSummary = !summaryFilter || review.summary.toLowerCase().includes(summaryFilter.toLowerCase()); // Changed from location to summary
         const matchesStartDate = !startDateFilter || new Date(review.date) >= new Date(startDateFilter);
         const matchesEndDate = !endDateFilter || new Date(review.date) <= new Date(endDateFilter);
         const matchesSource = !sourceFilter || review.source === sourceFilter; 
-        return matchesLocation && matchesStartDate && matchesEndDate && matchesSource; 
+        return matchesSummary && matchesStartDate && matchesEndDate && matchesSource; 
     });
 
     return (
