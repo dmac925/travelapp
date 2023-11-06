@@ -37,9 +37,9 @@ app.use("/hotels", require("./routes/hotelRoutes"));
 
 // These should be the last:
 app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, '../taskapp/build')));
+app.use(express.static(path.join(__dirname, '../travelapp/build')));
 app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../taskapp/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../travelapp/build', 'index.html'));
 });
 
 connecting().then(() => {

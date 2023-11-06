@@ -25,11 +25,6 @@ const BusinessForm = () => {
         </select>
       </div>
 
-      <div className="input-group">
-        <label>Map marker</label>
-        {/* A static image for now, but this can be replaced with an actual map integration */}
-        <img src="path_to_map_image.jpg" alt="Map Marker" />
-      </div>
 
       <div className="input-group">
         <label>Main phone number</label>

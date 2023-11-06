@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { URL } from '../config'
 import AverageRatings from './AverageRatings';
 import ReviewTable from './ReviewTable';
-
-
 
 function HotelDetailPage() {
   const [hotelDetail, setHotelDetail] = useState(null);
@@ -13,7 +12,7 @@ function HotelDetailPage() {
   useEffect(() => {
     const fetchHotelDetail = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/hotels/${hotelId}`);
+        const response = await axios.get(`${URL}/hotels/${hotelId}`);
         setHotelDetail(response.data);
       } catch (error) {
         console.error('Error fetching hotel detail:', error);
@@ -22,41 +21,76 @@ function HotelDetailPage() {
     fetchHotelDetail();
   }, [hotelId]);
 
+  const tableStyle = {
+    width: '60%',
+    margin: 'auto',
+    borderCollapse: 'collapse',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
+  };
+
+  const thStyle = {
+    backgroundColor: '#f4f4f4',
+    border: '1px solid #ddd',
+    padding: '8px',
+    textAlign: 'left'
+  };
+
+  const tdStyle = {
+    border: '1px solid #ddd',
+    padding: '8px'
+  };
+
   return (
     <div>
       {hotelDetail ? (
         <div>
-          <h1>{hotelDetail.name} (ID: {hotelDetail._id})</h1>
-          
-          {/* Basic Info */}
-          <h3>Public Name</h3>
-          <p>{hotelDetail.name}</p>
-
-          <h3>Category</h3>
-          <p>Hotel Class: {hotelDetail.hotelClass} Stars</p>
-
-          <h3>Address</h3>
-          <p>{hotelDetail.address.full}</p>
-
-          <h3>Phone</h3>
-          <p>{hotelDetail.phone}</p>
-
-          <h3>Website</h3>
-          <a href={hotelDetail.website} target="_blank" rel="noopener noreferrer">{hotelDetail.website}</a>
-
-          <h3>Operating Hours</h3>
-          {/* Placeholder for Operating Hours */}
-          <p>Monday - Sunday: Placeholder Hours</p>
-
-          {/* Ratings */}
-          <h3>Ratings</h3>
-          <p>Booking Rating: Placeholder Rating</p>
-          <p>TripAdvisor Rating: {hotelDetail.tripadvisorRating}</p>
-          <p>Google Rating: {hotelDetail.googleRating}</p>
-
-          {/* Other Details */}
-          <p>Total Rooms: {hotelDetail.totalRooms}</p>
-          <p>Email: {hotelDetail.email}</p>
+          <h1 style={{ textAlign: 'center' }}>{hotelDetail.name} (ID: {hotelDetail._id})</h1>
+          <table style={tableStyle}>
+            <tbody>
+              <tr>
+                <th style={thStyle}>Public Name</th>
+                <td style={tdStyle}>{hotelDetail.name}</td>
+              </tr>
+              <tr>
+                <th style={thStyle}>Hotel Rating</th>
+                <td style={tdStyle}>{hotelDetail.hotelClass} Stars</td>
+              </tr>
+              <tr>
+                <th style={thStyle}>Address</th>
+                <td style={tdStyle}>{hotelDetail.address.full}</td>
+              </tr>
+              <tr>
+                <th style={thStyle}>Phone</th>
+                <td style={tdStyle}>{hotelDetail.phone}</td>
+              </tr>
+              <tr>
+                <th style={thStyle}>Website</th>
+                <td style={tdStyle}>
+                  <a href={hotelDetail.website} target="_blank" rel="noopener noreferrer">{hotelDetail.website}</a>
+                </td>
+              </tr>
+              <tr>
+                <th style={thStyle}>Operating Hours</th>
+                <td style={tdStyle}>Monday - Sunday: Placeholder Hours</td>
+              </tr>
+              <tr>
+                <th style={thStyle}>Ratings</th>
+                <td style={tdStyle}>
+                  <div>Booking Rating: Placeholder Rating</div>
+                  <div>TripAdvisor Rating: {hotelDetail.tripadvisorRating}</div>
+                  <div>Google Rating: {hotelDetail.googleRating}</div>
+                </td>
+              </tr>
+              <tr>
+                <th style={thStyle}>Total Rooms</th>
+                <td style={tdStyle}>{hotelDetail.totalRooms}</td>
+              </tr>
+              <tr>
+                <th style={thStyle}>Email</th>
+                <td style={tdStyle}>{hotelDetail.email}</td>
+              </tr>
+            </tbody>
+          </table>
 
           {/* Review components */}
           <ReviewTable />
