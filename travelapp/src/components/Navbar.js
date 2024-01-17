@@ -22,6 +22,7 @@ const MyNavbar = ({ isLoggedIn, isAdmin, logout }) => {
             {isLoggedIn && (
               <>
                 <Nav.Link><NavLink to="/hotelResults">Hotel Results</NavLink></Nav.Link>
+                <Nav.Link><NavLink to="/ContentInput">Content Input</NavLink></Nav.Link>
                 <Nav.Link><NavLink to="/hotelListPage">Hotel List</NavLink></Nav.Link>
                 <Nav.Link><NavLink to="/ListingsTable">Listings Table</NavLink></Nav.Link>
                 <Nav.Link><NavLink to="/reviewsTable">Reviews Table</NavLink></Nav.Link>

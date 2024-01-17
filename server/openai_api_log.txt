@@ -81,3 +81,4 @@
 {"timestamp":"2023-11-03T21:33:36.934Z","apiResponseId":"chatcmpl-8Gw4WYF5z9aUdcEcdyhumBhLYwdb0","model":"gpt-4-0613","promptTokens":859,"completionTokens":604,"totalTokens":1463}
 {"timestamp":"2023-11-03T21:34:24.516Z","apiResponseId":"chatcmpl-8Gw5JG4m3vu9gU9RhB0wWDH2tPCL6","model":"gpt-4-0613","promptTokens":2016,"completionTokens":637,"totalTokens":2653}
 {"timestamp":"2023-11-03T21:34:39.428Z","apiResponseId":"chatcmpl-8Gw64lb4BbVCyxvTGgXuZJQ9lB0Gx","model":"gpt-4-0613","promptTokens":230,"completionTokens":181,"totalTokens":411}
+{"timestamp":"2023-11-07T21:57:46.127Z","apiResponseId":"chatcmpl-8IOMmwWJasD6RNm74HzTqpSHnepwx","model":"gpt-4-1106-preview","promptTokens":3010,"completionTokens":253,"totalTokens":3263}

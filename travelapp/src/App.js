@@ -20,7 +20,6 @@ import KeywordContainer from './views/KeywordContainer';
 import ListingsTable from './views/ListingsTable';
 
 
-
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [isAdmin, setIsAdmin] = useState(null);

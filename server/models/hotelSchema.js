@@ -29,6 +29,7 @@ const reviewSchema = new Schema({
 });
 
 const hotelSchema = new Schema({
+    tripadvisorID: { type: Number },
     name: { type: String, required: true },
     brand: { type: String },
     location: {

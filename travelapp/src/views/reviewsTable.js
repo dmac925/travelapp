@@ -58,14 +58,14 @@ const ReviewTable = () => {
             <h2>Reviews ({filteredReviews.length})</h2> {/* Adjusted to reflect the actual number of reviews */}
             <div className="filters">
             <div className="filter">
-                    <label>Location: </label>
-                    <input
-                        type="text"
-                        value={locationFilter}
-                        onChange={(e) => setLocationFilter(e.target.value)}
-                        placeholder="Filter by location"
-                    />
-                </div>
+  <label>Summary: </label>
+  <input
+    type="text"
+    value={summaryFilter}
+    onChange={(e) => setSummaryFilter(e.target.value)}
+    placeholder="Filter by location"
+  />
+</div>
                 <div className="filter">
                     <label>Start Date: </label>
                     <input
