@@ -5,6 +5,7 @@ const propertySchema = new Schema({
     propId: { type: Number },
     name: { type: String, required: true },
     developerName: { type: String },
+    developerSlug: { type: String },
     developerId: { type: Number },
     location: {
         lat: { type: Number},

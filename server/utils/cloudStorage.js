@@ -55,8 +55,7 @@ async function uploadPropertyImages(property) {
         let newImageUrls = []; // Store new GCS URLs
 
         // Base URL for images in your Google Cloud Storage bucket
-        const gcsBaseUrl = `https://storage.googleapis.com/${bucketName}/renamed-images/`;
-
+       
         for (let i = 0; i < imageUrls.length; i++) {
             const imageUrl = imageUrls[i];
 

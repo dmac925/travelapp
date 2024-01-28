@@ -5,7 +5,7 @@ import './reviewTable.css';
 
 const ReviewTable = () => {
     const [reviews, setReviews] = useState([]);
-    const [summaryFilter, setSummaryFilter] = useState(''); // Renamed from locationFilter
+    const [summaryFilter, setSummaryFilter] = useState(''); 
     const [startDateFilter, setStartDateFilter] = useState('');
     const [endDateFilter, setEndDateFilter] = useState('');
     const [sourceFilter, setSourceFilter] = useState(''); 
