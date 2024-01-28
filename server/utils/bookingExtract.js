@@ -17,9 +17,7 @@ async function processHotels() {
 
     for (const hotelData of hotelsData) {
         const hotel = new Hotel({
-            tripadvisorID: hotelData.id,
-            tripadvisorCategory: hotelData.category,
-            tripadvisorSubcategory: hotelData.subcategories,
+            bookingID: hotelData.id,
             name: hotelData.name,
             location: {
                 lat: hotelData.latitude,

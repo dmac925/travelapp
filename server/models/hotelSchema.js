@@ -30,6 +30,7 @@ const reviewSchema = new Schema({
 
 const hotelSchema = new Schema({
     tripadvisorID: { type: Number },
+    bookingID: { type: Number },
     name: { type: String, required: true },
     brand: { type: String },
     location: {
@@ -58,6 +59,8 @@ const hotelSchema = new Schema({
     tripadvisorRating: { type: Number },
     tripadvisorReviewNum: { type: Number },
     tripadvisorDescription: { type: String },
+    tripadvisorReviewTags: [reviewTagSchema],
+    tripadvisorAmenities: [{ type: String }],
     googleRating: { type: Number },
     googleReviewNum: { type: Number },
     googleDescription: { type: String },

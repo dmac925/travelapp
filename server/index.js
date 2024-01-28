@@ -1,7 +1,7 @@
 require ("dotenv").config();
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 5060;
+const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 
 app.use(require("express").json());
@@ -37,9 +37,9 @@ app.use("/hotels", require("./routes/hotelRoutes"));
 
 // These should be the last:
 app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, '../travelapp/build')));
+app.use(express.static(path.join(__dirname, '../propdata/build')));
 app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../travelapp/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../propdata/build', 'index.html'));
 });
 
 connecting().then(() => {
