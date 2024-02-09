@@ -59,7 +59,7 @@ const hotelSchema = new Schema({
     tripadvisorRating: { type: Number },
     tripadvisorReviewNum: { type: Number },
     tripadvisorDescription: { type: String },
-    tripadvisorReviewTags: [reviewTagSchema],
+    tripadvisorReviewTags: { type: String },
     tripadvisorAmenities: [{ type: String }],
     googleRating: { type: Number },
     googleReviewNum: { type: Number },

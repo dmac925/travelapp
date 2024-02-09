@@ -2,7 +2,6 @@ const axios = require('axios');
 const { ImageAnnotatorClient } = require('@google-cloud/vision');
 const mongoose = require('mongoose');
 const Hotel = require('../models/hotelSchema');
-const config = require('../data/config.json');
 const { uploadImage } = require('./cloudStorage');
 const { handlePoolLabel, handleBathLabel, handleGymLabel } = require('./labelHandlers');
 

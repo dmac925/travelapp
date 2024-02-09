@@ -1,12 +1,12 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const Property = require('../models/property'); // Adjust the path as needed
+const Property = require('../models/property'); 
 
 mongoose.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Could not connect to MongoDB:', err));
 
-const BATCH_SIZE = 100; // Adjust the batch size as needed
+const BATCH_SIZE = 100; 
 
 async function updatePropertyFeatures() {
     let offset = 0;

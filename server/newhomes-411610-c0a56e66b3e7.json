@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "newhomes-411610",
+  "private_key_id": "c0a56e66b3e76a46252c3be0e67342768cfb3582",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCu4CzjzEvh2jnS\nYXdyXfEZxuYSQYyChDMw64zcLb60Iwh5edodjj1/EV7ppUnX/ZFafrpB3iM7qBDP\nF2YSHXFwaCyrnqjKYwkkI62U79du82RVJsCwOzR/fA28agAmVKV0SutCoJf8KRlK\nZcn7Zwh2zuF+ZTbtMc/PZHM36MaidI858wuv8FF+P29d5CskWQeChOIDzg5pm6IH\n8xotN27fZ3E68hpGIjAEdqLfxUIdJjMb0o5cbuQXQUZkRaVnjeWnntisAiPO8TGq\nLZY3Eb6gIs7fQcrDYx8kP5kguXFDtJru9uj+DWOI6DGog31ahkozukiLieEhmviM\n9wvg3+zpAgMBAAECggEAMnW4LkEQckqUXarHGyaVP9FfKMxmPXDlDowhWJUQjoz/\nUIIDGH0nLIe4IeYSUTM3Imwn1YLCGuArfX4sczSwu3Ur0peU79U02Ys79ppgSQEN\nJe7pMdDbnJ+QnRnfEjBhj5VgnhiV0mqPhCKr7hF0ZUfb1CtjdnzlkFvVTUArNMvA\nC30E8oT97rJSB5GqB73jFCP7FXaXJ4gLZdOjeXVy4PKRGSxLKouYX6KPyP4o1+cE\noeasJsnDe8y6POd3QkSjgv/GgEc5Amf13kz9xBiByAiUqZEfWmX1ah5jWOidM/vF\nn5fgqe4vfG2SfigBkRSlmwKEA0e+71m+ZEedyjQ0gwKBgQDgGAI00sTG0juh4dQB\ndKOsa1iJlOf4mR+T+aOtOfkv1hv0ZcxClzTUknRlquG2id+P4s9JaIJzV8FLgFrj\nX9PtEiezLcTo/yF4eKqMkoKO7ycQK0tTn92KthIqLU8wmKoiUXCWNF4rG7kHHESM\ni6xptFVVN6r2CUrG+BBdy418RwKBgQDHxjeGp21eQoAiZJ0X2GO781vtMnAqZziv\nzZnKHRTpbUbGpirk56HMjDKksWMEHmN/vEEWYLR3VUn6h59oAMGMV+ExLNsSkeex\nzGVQtpgi3u5tnlAA0HqVSflnFOFR2//bOVWA/KslkvWv75/TP3BuY2kpDAfhN9Uy\nJKRDqvVVTwKBgA7e6P6SYgaDmvtyHfx+vgHKGdT/calYl/Tc4xSyvSuEfNRqEPT2\nTcYxddHtVg8j9Rb6SSEo80cuMqCNAvsFt+2Kf+HvDpsbmyAAeejcLBfKHQCArv38\npNn4nRn5acDi0J94Yg1Fql4X995V7OKavjVBh0whZpHvKewsOAHRaTEvAoGAVThs\ndWe00xIBQSq0jPiFSyc8Xso2aRBRcUV+xmZzhkRUfediwvVA41YnQHRfbeFcxp/T\nEC2+rm1WuqXiTWaNKkZOzUB6T8ioEwPDcJQEAFQjV+XB8Sb+M/MzjlKs79OuqKEj\npXujssqnPh81idM1LhIAST9VmTDNJK/W1vr13ycCgYBAaidFDlOivCTnNl+YPPVU\n4lYNSveUZR9FxhFmhYr1GOpLkfKPhnE6mnjy8lY4eZgUzgND2HfZFDtc4xhkNn+0\nFYM0k+8LvxGltC3z51vnUWntagooNUiMCtEVROMUO361fc6GRsIgrA3sln1K8LfO\nd/w2U8QxyOaln+R3HDiizw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "newhomes@newhomes-411610.iam.gserviceaccount.com",
+  "client_id": "103033327970550893350",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/newhomes%40newhomes-411610.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -10,9 +10,15 @@ const Property = require('../models/property');
 mongoose.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Connected to MongoDB');
-        uploadImagesToGoogleCloud();
+        
+        if (process.env.RUN_SCRIPT_AUTOMATICALLY === 'false') {
+            uploadImagesToGoogleCloud();
+        } else {
+            console.log('Script execution disabled.');
+        }
     })
     .catch(err => console.error('Could not connect to MongoDB:', err));
+
 
     async function uploadImagesToGoogleCloud() {
         try {
@@ -58,6 +64,9 @@ async function uploadPropertyImages(property) {
        
         for (let i = 0; i < imageUrls.length; i++) {
             const imageUrl = imageUrls[i];
+
+            const gcsBaseUrl = 'https://storage.googleapis.com/newhomesbucket01';
+
 
             // Skip if the image is already in GCS
             if (imageUrl.startsWith(gcsBaseUrl)) {
